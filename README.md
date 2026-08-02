@@ -30,7 +30,7 @@ The application data is saved locally in `applications.json`. This very file is 
 
 ## Flask API
 
-I also wanted to add this project a simple Flask API.
+I also added a simple Flask API to this project.
 
 Create and activate a virtual environment:
 
