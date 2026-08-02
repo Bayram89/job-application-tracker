@@ -1,13 +1,18 @@
 import json
 
-applications = []
+try:
+    with open("applications.json", "r") as file:
+        applications = json.load(file)
+except FileNotFoundError:
+    applications = []
 
 while True:
     print()
     print("Job Application Tracker")
     print("1. Add an application")
     print("2. Show all applications")
-    print("3. Exit")
+    print("3. Update application status")
+    print("4. Exit")
 
     choice = input("Choose an option: ")
 
@@ -23,7 +28,7 @@ while True:
         }
 
         applications.append(application)
-        
+
         with open("applications.json", "w") as file:
             json.dump(applications, file)
 
@@ -34,13 +39,32 @@ while True:
         if len(applications) == 0:
             print("No applications found")
         else:
+            application_number = 1
+
             for application in applications:
                 print()
+                print("Application number:", application_number)
                 print("Company:", application["company"])
                 print("Position:", application["position"])
                 print("Status:", application["status"])
 
+                application_number = application_number + 1
+
     elif choice == "3":
+        if len(applications) == 0:
+            print("No applications found")
+        else:
+            application_number = int(input("Application number: "))
+            new_status = input("New status: ")
+
+            applications[application_number - 1]["status"] = new_status
+
+            with open("applications.json", "w") as file:
+                json.dump(applications, file)
+
+            print("Status updated")
+
+    elif choice == "4":
         print("Goodbye")
         break
 
