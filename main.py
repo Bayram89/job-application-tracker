@@ -12,7 +12,8 @@ while True:
     print("1. Add an application")
     print("2. Show all applications")
     print("3. Update application status")
-    print("4. Exit")
+    print("4. Delete an application")
+    print("5. Exit")
 
     choice = input("Choose an option: ")
 
@@ -74,6 +75,27 @@ while True:
                 print("Please enter a number")
 
     elif choice == "4":
+        if len(applications) == 0:
+            print("No applications found")
+        else:
+            application_number_text = input("Application number: ")
+
+            if application_number_text.isdigit():
+                application_number = int(application_number_text)
+
+                if application_number >= 1 and application_number <= len(applications):
+                    removed_application = applications.pop(application_number - 1)
+
+                    with open("applications.json", "w") as file:
+                        json.dump(applications, file)
+
+                    print("Application deleted:", removed_application["company"])
+                else:
+                    print("Application number not found")
+            else:
+                print("Please enter a number")
+
+    elif choice == "5":
         print("Goodbye")
         break
 
