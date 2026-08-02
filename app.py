@@ -57,3 +57,21 @@ def create_application():
     save_applications(applications)
 
     return application, 201
+
+@app.route("/applications/<int:application_number>", methods=["PATCH"])
+def update_application_status(application_number):
+    applications = load_applications()
+
+    if application_number < 1 or application_number > len(applications):
+        return {"error": "Application not found"}, 404
+
+    data = request.get_json()
+    new_status = data.get("status")
+
+    if not new_status:
+        return {"error": "Status is required"}, 400
+
+    applications[application_number - 1]["status"] = new_status
+    save_applications(applications)
+
+    return applications[application_number - 1]
