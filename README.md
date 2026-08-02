@@ -55,3 +55,9 @@ The API runs at `http://127.0.0.1:5000`.
 - `POST /applications` adds an application
 - `PATCH /applications/1` updates application number 1
 - `DELETE /applications/1` deletes application number 1
+
+## Tests
+
+Run the tests with:
+
+`python -m pytest`
