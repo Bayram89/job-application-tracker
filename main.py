@@ -26,7 +26,14 @@ while True:
         print("Number of applications:", len(applications))
 
     elif choice == "2":
-        print("Show all applications")
+        if len(applications) == 0:
+            print("No applications found")
+        else:
+            for application in applications:
+                print()
+                print("Company:", application["company"])
+                print("Position:", application["position"])
+                print("Status:", application["status"])
 
     elif choice == "3":
         print("Goodbye")
