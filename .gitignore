@@ -1,1 +1,3 @@
 applications.json
+.venv/
+__pycache__/
