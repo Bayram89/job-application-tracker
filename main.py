@@ -1,8 +1,13 @@
 import json
 
+def save_applications(application_list):
+    with open("applications.json", "w") as file:
+        json.dump(application_list, file)
+
 try:
     with open("applications.json", "r") as file:
         applications = json.load(file)
+
 except FileNotFoundError:
     applications = []
 
@@ -30,8 +35,7 @@ while True:
 
         applications.append(application)
 
-        with open("applications.json", "w") as file:
-            json.dump(applications, file)
+        save_applications(applications)
 
         print("Application added")
         print("Number of applications:", len(applications))
@@ -65,8 +69,7 @@ while True:
 
                     applications[application_number - 1]["status"] = new_status
 
-                    with open("applications.json", "w") as file:
-                        json.dump(applications, file)
+                    save_applications(applications)
 
                     print("Status updated")
                 else:
@@ -86,8 +89,7 @@ while True:
                 if application_number >= 1 and application_number <= len(applications):
                     removed_application = applications.pop(application_number - 1)
 
-                    with open("applications.json", "w") as file:
-                        json.dump(applications, file)
+                    save_applications(applications)
 
                     print("Application deleted:", removed_application["company"])
                 else:
