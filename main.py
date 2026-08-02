@@ -1,3 +1,5 @@
+import json
+
 applications = []
 
 while True:
@@ -21,6 +23,9 @@ while True:
         }
 
         applications.append(application)
+        
+        with open("applications.json", "w") as file:
+            json.dump(applications, file)
 
         print("Application added")
         print("Number of applications:", len(applications))
