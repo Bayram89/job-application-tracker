@@ -75,3 +75,18 @@ def update_application_status(application_number):
     save_applications(applications)
 
     return applications[application_number - 1]
+
+@app.route("/applications/<int:application_number>", methods=["DELETE"])
+def delete_application(application_number):
+    applications = load_applications()
+
+    if application_number < 1 or application_number > len(applications):
+        return {"error": "Application not found"}, 404
+
+    removed_application = applications.pop(application_number - 1)
+    save_applications(applications)
+
+    return {
+        "message": "Application deleted",
+        "company": removed_application["company"]
+    }
