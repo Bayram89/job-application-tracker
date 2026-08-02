@@ -54,15 +54,24 @@ while True:
         if len(applications) == 0:
             print("No applications found")
         else:
-            application_number = int(input("Application number: "))
-            new_status = input("New status: ")
+            application_number_text = input("Application number: ")
 
-            applications[application_number - 1]["status"] = new_status
+            if application_number_text.isdigit():
+                application_number = int(application_number_text)
 
-            with open("applications.json", "w") as file:
-                json.dump(applications, file)
+                if application_number >= 1 and application_number <= len(applications):
+                    new_status = input("New status: ")
 
-            print("Status updated")
+                    applications[application_number - 1]["status"] = new_status
+
+                    with open("applications.json", "w") as file:
+                        json.dump(applications, file)
+
+                    print("Status updated")
+                else:
+                    print("Application number not found")
+            else:
+                print("Please enter a number")
 
     elif choice == "4":
         print("Goodbye")
