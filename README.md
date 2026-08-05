@@ -1,6 +1,6 @@
 # Job Application Tracker
 
-A simple command-line app I've made while learning Python.
+A Python job application tracker with a command-line interface and Flask REST API. It supports creating, viewing, updating and deleting applications, with local JSON persistence.
 
 ## What it can do
 
@@ -10,15 +10,13 @@ A simple command-line app I've made while learning Python.
 - Delete an application
 - Save applications in a JSON file
 
-## What I especially practiced with
+- ## Technical overview
 
-- Variables and user input
-- If and else conditions
-- Lists and dictionaries
-- While and for loops
-- Functions
-- Reading and writing a JSON file
-- Basic input checking
+- Python command-line interface for managing applications
+- Flask REST API with GET, POST, PATCH and DELETE endpoints
+- JSON persistence for local application data
+- Request validation and HTTP error responses
+- pytest tests for API responses
 
 ## Run the project
 
@@ -30,7 +28,7 @@ The application data is saved locally in `applications.json`. This very file is 
 
 ## Flask API
 
-I also added a simple Flask API to this project.
+The project also provides a Flask REST API for managing applications through HTTP requests.
 
 Create and activate a virtual environment:
 
