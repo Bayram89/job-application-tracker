@@ -2,60 +2,88 @@
 
 A Python job application tracker with a command-line interface and Flask REST API. It supports creating, viewing, updating and deleting applications, with local JSON persistence.
 
-## What it can do
+## Features
 
-- Add a job application
-- Show saved applications
+- Add job applications
+- View saved applications
 - Update an application status
-- Delete an application
-- Save applications in a JSON file
+- Delete applications
+- Save application data between sessions
+- Access application data through a REST API
+- Validate missing or incorrect input
+- Return suitable HTTP error responses
 
 ## Technical overview
 
-- Python command-line interface for managing applications
-- Flask REST API with GET, POST, PATCH and DELETE endpoints
+- Python command-line interface
+- Flask REST API
+- GET, POST, PATCH and DELETE endpoints
 - JSON persistence for local application data
-- Request validation and HTTP error responses
+- Input and request validation
 - pytest tests for API responses
 
-## Run the project
+## Run the command-line application
 
-Make sure Python is installed.
+Python 3 is required.
 
-Run `py main.py`.
+```bash
+python main.py
+```
 
-The application data is saved locally in `applications.json`. This very file is not uploaded to GitHub.
+On Windows, this can also be run with:
 
-## Flask API
+```bash
+py main.py
+```
 
-The project also provides a Flask REST API for managing applications through HTTP requests.
+Application data is stored locally in `applications.json`, which is excluded from version control.
 
-Create and activate a virtual environment:
+## Run the Flask API
 
-`py -m venv .venv`
+Create a virtual environment:
 
-`source .venv/Scripts/activate`
+```bash
+python -m venv .venv
+```
 
-Install the packages:
+Activate it with Git Bash:
 
-`python -m pip install -r requirements.txt`
+```bash
+source .venv/Scripts/activate
+```
+
+Install the required packages:
+
+```bash
+python -m pip install -r requirements.txt
+```
 
 Start the API:
 
-`python -m flask --app app run --debug`
+```bash
+python -m flask --app app run --debug
+```
 
-The API runs at `http://127.0.0.1:5000`.
+The API runs at:
+
+```text
+http://127.0.0.1:5000
+```
 
 ## API endpoints
 
-- `GET /applications` shows all applications
-- `GET /applications/1` shows application number 1
-- `POST /applications` adds an application
-- `PATCH /applications/1` updates application number 1
-- `DELETE /applications/1` deletes application number 1
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/applications` | View all applications |
+| GET | `/applications/1` | View one application |
+| POST | `/applications` | Add an application |
+| PATCH | `/applications/1` | Update an application status |
+| DELETE | `/applications/1` | Delete an application |
 
-## Tests
+## Run the tests
 
-Run the tests with:
+```bash
+python -m pytest
+```
 
-`python -m pytest`
+The tests check the home endpoint, the applications response and the response for an unknown application.
