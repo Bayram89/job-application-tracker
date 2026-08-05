@@ -10,7 +10,7 @@ A Python job application tracker with a command-line interface and Flask REST AP
 - Delete an application
 - Save applications in a JSON file
 
-- ## Technical overview
+## Technical overview
 
 - Python command-line interface for managing applications
 - Flask REST API with GET, POST, PATCH and DELETE endpoints
